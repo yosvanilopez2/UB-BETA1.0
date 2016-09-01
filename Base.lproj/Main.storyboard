@@ -303,11 +303,12 @@
                         <outlet property="firstName" destination="dPA-Wz-Qva" id="ed3-G9-9SR"/>
                         <outlet property="lastName" destination="YUs-qb-KXP" id="S2L-7p-klk"/>
                         <outlet property="password" destination="3EW-7F-bvT" id="6ad-FD-c9h"/>
+                        <segue destination="fxo-EI-Znh" kind="show" identifier="LoggedIn" id="Ul2-SJ-Rc0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVp-3o-mcd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.79999999999995" y="35.532233883058474"/>
+            <point key="canvasLocation" x="983" y="45"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="IcK-J8-gOg">
@@ -381,7 +382,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rT-xX-v48" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="36"/>
+            <point key="canvasLocation" x="1610" y="45"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ul2-SJ-Rc0"/>
+    </inferredMetricsTieBreakers>
 </document>

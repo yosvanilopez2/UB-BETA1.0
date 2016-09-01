@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         FIRDatabase.database().persistenceEnabled = true
+        if UserDefaults.standard.value(forKey: KEY_UID) != nil {
+            performSegue(withIdentifier: SEGUE_LOGIN, sender: nil)
+        }
     }
     
     // attempt is added because login and signups are not for sure
@@ -26,8 +29,9 @@ class ViewController: UIViewController {
                 if error != nil {
                     showErrorAlert(title: "User Does Not Exist", msg: "please enter a valid email and password", currentView: self)
                 } else {
+                    // get rid of this line later on possibly make logging in automated 
                     print ("Signed in with uid:", user?.uid)
-                    self.performSegue(withIdentifier: "LoggedIn", sender: nil)
+                    self.performSegue(withIdentifier: SEGUE_LOGIN, sender: nil)
                 }
             })
         } else {
