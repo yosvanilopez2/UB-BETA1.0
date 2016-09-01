@@ -7,19 +7,36 @@
 //
 
 import UIKit
-
+import FirebaseDatabase
+import FirebaseAuth
 class ViewController: UIViewController {
-
+    // change lbl to field in the name eventually
+    @IBOutlet weak var emailLbl: UITextField!
+    @IBOutlet weak var passwordLbl: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        FIRDatabase.database().persistenceEnabled = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // attempt is added because login and signups are not for sure
+    @IBAction func attemptSignIn(sender: UIButton) {
+        if let email = emailLbl.text, email != "", let pwd = passwordLbl.text, pwd != "" {
+            FIRAuth.auth()!.signIn(withEmail: email, password: pwd, completion: { user, error in
+                if error != nil {
+                    showErrorAlert(title: "User Does Not Exist", msg: "please enter a valid email and password", currentView: self)
+                } else {
+                    print ("Signed in with uid:", user?.uid)
+                    self.performSegue(withIdentifier: "LoggedIn", sender: nil)
+                }
+            })
+        } else {
+            showErrorAlert(title: "Invalid Password or Email", msg: "The email or password entered is invalid", currentView: self)
+        }
     }
-
-
+    @IBAction func attemptSignUp(sender: UIButton) {
+        self.performSegue(withIdentifier: "AccessRequest", sender: nil)
+    }
+ 
 }
 

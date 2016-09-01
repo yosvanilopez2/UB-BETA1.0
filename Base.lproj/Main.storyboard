@@ -50,11 +50,13 @@
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="attemptSignInSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZOQ-rp-iyO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oFK-QK-CN4">
-                                <frame key="frameInset" minX="68" minY="212" width="240" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oFK-QK-CN4">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="1X1-KM-U0W"/>
                                     <constraint firstAttribute="height" constant="150" id="wgb-0M-krl"/>
@@ -65,28 +67,44 @@
                                     <color key="titleColor" red="0.54792061237373735" green="0.54792061237373735" blue="0.54792061237373735" alpha="0.25963365709459457" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0Y-6N-eTF">
+                                <state key="normal" title="Sign Up?">
+                                    <color key="titleColor" red="0.54792061240000001" green="0.54792061240000001" blue="0.54792061240000001" alpha="0.25963365710000003" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="attemptSignUpWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sLN-pn-aca"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.19215686274509802" green="0.29019607843137252" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="f0Y-6N-eTF" secondAttribute="bottom" constant="8" id="7xH-bJ-wOc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EqM-Vm-3WC" secondAttribute="trailing" constant="30" id="8yn-2f-qdK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="loQ-zQ-uyG" secondAttribute="bottom" constant="60" id="RPu-YZ-vY9"/>
                             <constraint firstItem="EqM-Vm-3WC" firstAttribute="top" secondItem="oFK-QK-CN4" secondAttribute="bottom" constant="47" id="TDJ-q0-Bu1"/>
                             <constraint firstItem="loQ-zQ-uyG" firstAttribute="top" secondItem="EqM-Vm-3WC" secondAttribute="bottom" constant="10" id="dvY-1s-srm"/>
+                            <constraint firstItem="f0Y-6N-eTF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="exZ-Gn-sVc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="loQ-zQ-uyG" secondAttribute="trailing" constant="30" id="g7d-F0-jB4"/>
                             <constraint firstItem="loQ-zQ-uyG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="gbn-c5-32N"/>
                             <constraint firstItem="EqM-Vm-3WC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="grt-JA-bjV"/>
                             <constraint firstItem="oFK-QK-CN4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iSk-Wb-Ik6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailLbl" destination="ZeN-45-xmU" id="OTg-Va-Bix"/>
+                        <outlet property="passwordLbl" destination="s74-3c-D56" id="hc6-qh-j4n"/>
+                        <segue destination="fxo-EI-Znh" kind="show" identifier="LoggedIn" id="Mku-4S-c2P"/>
+                        <segue destination="lGZ-0S-Tci" kind="show" identifier="AccessRequest" id="ped-o5-dCn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="35.532233883058474"/>
+            <point key="canvasLocation" x="-303.19999999999999" y="35.532233883058474"/>
         </scene>
-        <!--View Controller-->
+        <!--Access RequestVC-->
         <scene sceneID="3zl-IS-nFC">
             <objects>
-                <viewController id="lGZ-0S-Tci" sceneMemberID="viewController">
+                <viewController id="lGZ-0S-Tci" customClass="AccessRequestVC" customModule="UB_BETA1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iCu-jU-cpv"/>
                         <viewControllerLayoutGuide type="bottom" id="7uP-ao-niK"/>
@@ -97,7 +115,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Access Code " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8IV-20-05p">
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNZ-D6-S6a" customClass="MaterialButton" customModule="UB_BETA1_0" customModuleProvider="target">
@@ -110,7 +128,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cMm-MF-qGg" kind="show" id="bvD-XB-cGT"/>
+                                    <action selector="continueToSignUp:" destination="lGZ-0S-Tci" eventType="touchUpInside" id="iRa-mS-8YR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPW-4f-yIm" customClass="MaterialButton" customModule="UB_BETA1_0" customModuleProvider="target">
@@ -122,6 +140,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelBtn:" destination="lGZ-0S-Tci" eventType="touchUpInside" id="kzd-Dh-Xgw"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dc8-E7-Ym8" customClass="MaterialTextField" customModule="UB_BETA1_0" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.41348184119999998" colorSpace="calibratedRGB"/>
@@ -144,7 +165,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="8IV-20-05p" secondAttribute="trailing" constant="30" id="S1d-vV-bK8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TNZ-D6-S6a" secondAttribute="trailing" constant="61" id="UXz-iS-Zos"/>
                             <constraint firstItem="TNZ-D6-S6a" firstAttribute="width" secondItem="wPW-4f-yIm" secondAttribute="width" id="Waq-ka-oHd"/>
-                            <constraint firstItem="TNZ-D6-S6a" firstAttribute="leading" secondItem="wPW-4f-yIm" secondAttribute="trailing" constant="15" id="cqq-1f-pkG"/>
+                            <constraint firstItem="TNZ-D6-S6a" firstAttribute="leading" secondItem="wPW-4f-yIm" secondAttribute="trailing" constant="8" id="cqq-1f-pkG"/>
                             <constraint firstItem="dc8-E7-Ym8" firstAttribute="leading" secondItem="C16-BV-zVJ" secondAttribute="leadingMargin" constant="61" id="evD-TK-ixd"/>
                             <constraint firstItem="wPW-4f-yIm" firstAttribute="leading" secondItem="C16-BV-zVJ" secondAttribute="leadingMargin" constant="61" id="ht0-SN-ppD"/>
                             <constraint firstItem="wPW-4f-yIm" firstAttribute="top" secondItem="dc8-E7-Ym8" secondAttribute="bottom" constant="40" id="qcG-Ty-MUf"/>
@@ -152,15 +173,19 @@
                             <constraint firstItem="TNZ-D6-S6a" firstAttribute="height" secondItem="wPW-4f-yIm" secondAttribute="height" id="waS-Xn-zt1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="codeTextField" destination="dc8-E7-Ym8" id="aVG-8A-Hva"/>
+                        <segue destination="cMm-MF-qGg" kind="show" identifier="SignUp" id="nIs-Of-vNt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vpw-ol-1Qb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="381.60000000000002" y="35.532233883058474"/>
+            <point key="canvasLocation" x="329" y="36"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign UpVC-->
         <scene sceneID="sm9-wm-WcG">
             <objects>
-                <viewController id="cMm-MF-qGg" sceneMemberID="viewController">
+                <viewController id="cMm-MF-qGg" customClass="SignUpVC" customModule="UB_BETA1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kks-S2-OD7"/>
                         <viewControllerLayoutGuide type="bottom" id="RSj-7q-rjD"/>
@@ -218,6 +243,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="attemptSignUpWithSender:" destination="cMm-MF-qGg" eventType="touchUpInside" id="1II-Y2-zZC"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZC7-iQ-VhR" customClass="MaterialTextField" customModule="UB_BETA1_0" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.41348184119999998" colorSpace="calibratedRGB"/>
@@ -239,7 +267,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lGZ-0S-Tci" kind="show" id="P4I-MW-sfs"/>
+                                    <action selector="cancelBtnWithSender:" destination="cMm-MF-qGg" eventType="touchUpInside" id="5gx-1u-2Il"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -269,6 +297,13 @@
                             <constraint firstItem="Gsh-O3-EHd" firstAttribute="top" secondItem="YUs-qb-KXP" secondAttribute="bottom" constant="15" id="vPJ-HZ-Oyy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPassword" destination="ZC7-iQ-VhR" id="raT-KP-mzX"/>
+                        <outlet property="emailAddress" destination="Gsh-O3-EHd" id="75h-hk-n5d"/>
+                        <outlet property="firstName" destination="dPA-Wz-Qva" id="ed3-G9-9SR"/>
+                        <outlet property="lastName" destination="YUs-qb-KXP" id="S2L-7p-klk"/>
+                        <outlet property="password" destination="3EW-7F-bvT" id="6ad-FD-c9h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVp-3o-mcd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
