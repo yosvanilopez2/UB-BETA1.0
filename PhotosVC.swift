@@ -7,29 +7,46 @@
 //
 
 import UIKit
-
-class PhotosVC: UIViewController {
-
+import FirebaseDatabase
+class PhotosVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var albumCollection: UICollectionView!
+    var albums = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        albumCollection.delegate = self
+        albumCollection.dataSource = self
+        loadAlbums()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func loadAlbums() {
+        
     }
-    */
+    
+    @IBAction func createNewAlbum(_ sender: UIButton) {
+        // present the new album alert that asks for a title
+        
+        DataService.instance.createAlbum(title: "default title", photos: ["photo1", "photo2"])
+        loadAlbums()
+    }
+    
+/****************************************************************/
+/* functions to manage album collection                         */
+/****************************************************************/
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return albums.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return AlbumCell()
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // change the sender so that the information of the currently selected cell is transfered over
+        performSegue(withIdentifier: "openAlbum", sender: nil)
+    }
+
 
 }
