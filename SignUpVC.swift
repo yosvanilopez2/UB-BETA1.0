@@ -15,6 +15,7 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var emailAddress: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
+    // watch for this and how its handled could potentially lead to bugs if not handled correctly
     var accountType: String!
     override func viewDidLoad() {
         super.viewDidLoad()
